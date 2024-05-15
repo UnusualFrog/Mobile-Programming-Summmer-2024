@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
+import localweather from './StJohnsWeather.json';
 
 function App() {
+  console.log(localweather);
+
+
   return (
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Monday</h2>
+      <h2>Tuesday</h2>
+      <h2>Wednesday</h2>
+      <h2>Thursday</h2>
+      <h2>Friday</h2>
+      <h2>Saturday</h2>
+      <h2>Sunday</h2>
     </div>
+    
   );
 }
 
