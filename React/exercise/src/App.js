@@ -1,11 +1,16 @@
 //import logo from './logo.svg';
 import './App.css';
 import localweather from './StJohnsWeather.json';
+import { useState } from 'react';
 
 function App() {
-  console.log(localweather);
+  //let clicked = 0;
+  let [clicked, setClicked] = useState(0)
   return (
     <>
+      <button onClick={(evt) => {
+        setClicked(clicked + 1);
+      }}>{clicked}</button>
       <h2>Noah's Weather</h2>
       <WeatherList weather={localweather}></WeatherList>
     </>
@@ -31,6 +36,6 @@ function Weather({info}) {
       <br></br>
     </>
   )
-}
+};
 
 export default App;
