@@ -4,21 +4,33 @@ import localweather from './StJohnsWeather.json';
 
 function App() {
   console.log(localweather);
-
-
   return (
-    
-    <div className="App">
-      <h2>Monday</h2>
-      <h2>Tuesday</h2>
-      <h2>Wednesday</h2>
-      <h2>Thursday</h2>
-      <h2>Friday</h2>
-      <h2>Saturday</h2>
-      <h2>Sunday</h2>
-    </div>
-    
+    <>
+      <h2>Noah's Weather</h2>
+      <WeatherList weather={localweather}></WeatherList>
+    </>
   );
+}
+
+function WeatherList({weather}) {
+  return (
+    <>
+      <h2>{weather.city}</h2>
+      {weather.forecast.map(day => <Weather info={day}></Weather>)}
+    </>
+  );
+};
+
+function Weather({info}) {
+  return (
+    <>
+      <h3>{info.day}</h3>
+      <p>{info.temp}</p>
+      <p>{info.precip}</p>
+      <p>{info.wind}</p>
+      <br></br>
+    </>
+  )
 }
 
 export default App;
