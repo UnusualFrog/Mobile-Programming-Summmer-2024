@@ -2,15 +2,35 @@
 import './App.css';
 import localweather from './StJohnsWeather.json';
 import OttawaWeather from './OttawaWeather.json';
-import { useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 
 function App() {
-  let [weatherForecast, setWeatherForecast] = useState(localweather)
+
+ let [weatherForecast, setWeatherForecast] = useState(localweather)
+
+  let [count, setCount] = useReducer( (state, action) => {
+    let next = state - action;
+    if (next <= 0) {
+      if (weatherForecast.city === "St Jonn's" ? setWeatherForecast(OttawaWeather) : setWeatherForecast(localweather));
+      return 5;
+    } else {
+      return next;
+    }
+  }, 5);
+
+  useEffect( () => {
+    setInterval( () => {
+      setCount(1)
+    }, 1000)
+  }, [])
+
+ 
   return (
     <>
-      <button onClick={(evt) => {
+      <h2>{count}</h2>
+      {/* <button onClick={(evt) => {
         weatherForecast.city === "St Jonn's" ? setWeatherForecast(OttawaWeather) : setWeatherForecast(localweather)
-      }}>{weatherForecast.city}</button>
+      }}>{weatherForecast.city}</button> */}
       <h2>Noah's Weather</h2>
       <WeatherList weather={weatherForecast}></WeatherList>
     </>
